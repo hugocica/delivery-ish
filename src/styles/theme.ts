@@ -6,6 +6,7 @@ declare module 'styled-components' {
     colors: { [key in keyof typeof colors]: string };
     fonts: { [key in keyof typeof fonts]: any };
     fontFamily: string;
+    grid: { [key in keyof typeof grid]: any };
     spacing: (multiplier: number) => number;
   }
 }
@@ -17,11 +18,16 @@ export const colors = {
   gray2: '#EBEBEB',
   gray3: '#DDDDDD',
   gray4: '#484849',
-  primary100: '#FFC500',
-  primary60: 'rgb(255, 197, 0.6)',
-  primary38: 'rgb(255, 197, 0.38)',
-  primary12: 'rgb(255, 197, 0.12)',
-  primary4: 'rgb(255, 197, 0.04)',
+  // primary100: '#FFC500',
+  // primary60: 'rgb(255, 197, 0.6)',
+  // primary38: 'rgb(255, 197, 0.38)',
+  // primary12: 'rgb(255, 197, 0.12)',
+  // primary4: 'rgb(255, 197, 0.04)',
+  primary100: '#0AA5FA',
+  primary60: 'rgba(10, 165, 250, 0.6)',
+  primary38: 'rgba(10, 165, 250, 0.38)',
+  primary12: 'rgba(10, 165, 250, 0.12)',
+  primary4: 'rgba(10, 165, 250, 0.04)',
   unset: 'unset',
 };
 
@@ -30,6 +36,12 @@ const genericFontType = {
 };
 
 export const fonts = {
+  heading2: {
+    ...genericFontType,
+    fontSize: 22,
+    letterSpacing: 0,
+    lineHeight: '19px',
+  },
   body: {
     ...genericFontType,
     fontSize: 14,
@@ -46,11 +58,41 @@ export const fonts = {
   },
 };
 
+const breakpoints = {
+  lg: 1280,
+  md: 980,
+  sm: 736,
+  xs: 480,
+};
+
+const gutter = 7;
+
+export const grid = {
+  breakpoints,
+  row: {
+    padding: gutter,
+  },
+  col: {
+    padding: gutter,
+  },
+  container: {
+    padding: gutter,
+    maxWidth: {
+      xl: 1280,
+      lg: 1280,
+      md: 980,
+      sm: 736,
+      xs: 480,
+    },
+  },
+};
+
 const theme: DefaultTheme = {
   colors,
   fonts,
   fontFamily: genericFontType.fontFamily,
-  spacing: (multiplier: number) => multiplier * 7,
+  grid,
+  spacing: (multiplier: number) => multiplier * gutter,
 };
 
 export default theme;
