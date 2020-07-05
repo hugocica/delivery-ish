@@ -45,6 +45,7 @@ export default function HomePage() {
         pathname: '/produtos',
         state: {
           products: productsData?.poc?.products,
+          address: address,
         },
       });
     }

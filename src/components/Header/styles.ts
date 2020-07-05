@@ -4,6 +4,7 @@ import Logo from 'assets/icons/beer.svg';
 
 export const Wrapper = styled.div`
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.primary100};
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary100};
   display: flex;
   height: 96px;
@@ -13,5 +14,6 @@ export const Wrapper = styled.div`
 
 export const BeerLogo = styled(Logo)`
   cursor: pointer;
-  fill: ${({ theme }) => theme.colors.primary100};
+  margin-left: ${({ theme }) => theme.spacing(1)}px;
+  fill: ${({ theme }) => theme.colors.white};
 `;
