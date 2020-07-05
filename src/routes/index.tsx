@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Home from 'pages/Home';
+import Products from 'pages/Products';
 
 const DefaultRoute = ({ ...rest }) => (
   <>
@@ -22,7 +23,7 @@ export default function Routes({ ...rest }) {
       <DefaultRoute
         path="/produtos"
         exact
-        component={Home}
+        component={Products}
         pageTitle="Produtos"
       />
     </Switch>

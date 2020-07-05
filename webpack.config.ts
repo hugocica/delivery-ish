@@ -22,19 +22,13 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
         use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.svg$/,
-        use: [
-          {
-            loader: 'react-svg-loader',
-            options: {
-              jsx: false,
-            },
-          },
-        ],
+        exclude: /node_modules/,
+        loader: 'svg-react-loader',
       },
     ],
   },

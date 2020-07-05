@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+interface IInput {
+  hasContent: boolean;
+}
+
+export const Input = styled.input<IInput>`
   border: 1px solid ${({ theme }) => theme.colors.gray3};
+  border-bottom-color: ${({ theme, hasContent }) =>
+    hasContent ? theme.colors.primary100 : theme.colors.gray3};
   border-bottom-width: 3px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
