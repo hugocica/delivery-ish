@@ -7,6 +7,7 @@ declare module 'styled-components' {
     fonts: { [key in keyof typeof fonts]: any };
     fontFamily: string;
     grid: { [key in keyof typeof grid]: any };
+    mediaQueries: { [key in keyof typeof mediaQueries]: string };
     spacing: (multiplier: number) => number;
   }
 }
@@ -19,15 +20,6 @@ export const colors = {
   gray3: '#DDDDDD',
   gray4: '#484849',
   primary100: '#FFC500',
-  // primary60: 'rgb(255, 197, 0.6)',
-  // primary38: 'rgb(255, 197, 0.38)',
-  // primary12: 'rgb(255, 197, 0.12)',
-  // primary4: 'rgb(255, 197, 0.04)',
-  // primary100: '#0AA5FA',
-  primary60: 'rgba(10, 165, 250, 0.6)',
-  primary38: 'rgba(10, 165, 250, 0.38)',
-  primary12: 'rgba(10, 165, 250, 0.12)',
-  primary4: 'rgba(10, 165, 250, 0.04)',
   unset: 'unset',
 };
 
@@ -95,11 +87,19 @@ export const grid = {
   },
 };
 
+export const mediaQueries = {
+  xs: `(max-width: ${grid.breakpoints.xs}px)`,
+  sm: `(max-width: ${grid.breakpoints.sm}px)`,
+  md: `(max-width: ${grid.breakpoints.md}px)`,
+  lg: `(max-width: ${grid.breakpoints.lg}px)`,
+};
+
 const theme: DefaultTheme = {
   colors,
   fonts,
   fontFamily: genericFontType.fontFamily,
   grid,
+  mediaQueries,
   spacing: (multiplier: number) => multiplier * gutter,
 };
 
