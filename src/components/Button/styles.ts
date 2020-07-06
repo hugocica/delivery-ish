@@ -40,12 +40,14 @@ export const Button = styled.button<IButtonStyled>`
   border-radius: 4px;
   color: ${({ color, theme }) =>
     color === 'primary' ? theme.colors.white : theme.colors.primary100};
+  cursor: pointer;
   height: 32px;
   outline: none;
+  padding: 0 ${({ theme }) => theme.spacing(1)}px;
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'unset')};
   ${({ theme }) => theme.fonts.button};
 
-  + ${Loading} {
+  & + ${Loading} {
     fill: ${({ color, theme }) =>
       color === 'primary' ? theme.colors.white : theme.colors.primary100};
   }
