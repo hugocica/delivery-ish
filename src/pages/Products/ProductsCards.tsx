@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { IProduct } from './types';
 
+import PlusSign from 'assets/icons/plus.svg';
+import MinusSign from 'assets/icons/minus.svg';
+import Button from 'components/Button';
+import Text from 'components/Text';
+
 import * as s from './styles';
 
 interface IProps {
@@ -32,6 +37,33 @@ const ProductsCards = ({ product, ...rest }: IProps) => {
               currency: 'BRL',
             }).format(product.productVariants[0].price)}
           </s.ProductPrice>
+          <s.UnityContainer>
+            {quantity > 0 && (
+              <>
+                <Button
+                  outlined
+                  onClick={() =>
+                    setQuantity((currentQuantity) => --currentQuantity)
+                  }
+                  title="remover do carrinho"
+                >
+                  <MinusSign width={14} />
+                </Button>
+                <s.UnityText color="primary100" bold title="itens no carrinho">
+                  {quantity}
+                </s.UnityText>
+              </>
+            )}
+            <Button
+              outlined
+              onClick={() =>
+                setQuantity((currentQuantity) => ++currentQuantity)
+              }
+              title="adicionar ao carrinho"
+            >
+              <PlusSign width={14} />
+            </Button>
+          </s.UnityContainer>
         </s.InfosFooter>
       </s.ProductCardInfos>
     </s.ProductCard>

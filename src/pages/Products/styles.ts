@@ -21,6 +21,16 @@ export const ProductCard = styled.div`
   margin: ${({ theme }) => theme.spacing(2)}px;
   overflow: hidden;
   width: calc(100% / 5 - 28px);
+
+  @media ${({ theme }) => theme.mediaQueries.lg} {
+    width: calc(100% / 4 - 28px);
+  }
+  @media ${({ theme }) => theme.mediaQueries.md} {
+    width: calc(100% / 3 - 28px);
+  }
+  @media ${({ theme }) => theme.mediaQueries.sm} {
+    width: 100%;
+  }
 `;
 
 export const ProductCardImageContainer = styled.div`
@@ -56,6 +66,24 @@ export const ProductName = styled(Text)`
   margin-top: ${({ theme }) => theme.spacing(1)}px;
 `;
 
-export const InfosFooter = styled.div``;
+export const InfosFooter = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
 
 export const ProductPrice = styled(Text)``;
+
+export const UnityContainer = styled.div`
+  align-items: center;
+  display: flex;
+
+  svg {
+    fill: ${({ theme }) => theme.colors.primary100};
+  }
+`;
+
+export const UnityText = styled(Text)`
+  margin: 0 ${({ theme }) => theme.spacing(1)}px;
+`;

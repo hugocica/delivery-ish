@@ -3,7 +3,7 @@ import React from 'react';
 import { IProps } from './types';
 import * as s from './styles';
 
-const Text: React.FC<IProps> = ({
+const Text: React.FC<IProps & React.HTMLAttributes<HTMLParagraphElement>> = ({
   type = 'body',
   bold = false,
   color = 'gray4',

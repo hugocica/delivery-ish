@@ -17,8 +17,13 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [address, setAddress] = useState<string>('');
 
-  const [getPOC, { data: searchData }] = useLazyQuery(SEARCH);
-  const [getProducts, { data: productsData }] = useLazyQuery(PRODUCTS);
+  const [getPOC, { loading: loadingSearch, data: searchData }] = useLazyQuery(
+    SEARCH
+  );
+  const [
+    getProducts,
+    { loading: loadingProducts, data: productsData },
+  ] = useLazyQuery(PRODUCTS);
 
   useEffect(() => {
     () => console.log('unmounted');
@@ -99,8 +104,10 @@ export default function HomePage() {
             <Button
               type="button"
               color="primary"
-              disabled={isLoading || !address.length}
-              isLoading={isLoading}
+              disabled={
+                isLoading || loadingProducts || loadingSearch || !address.length
+              }
+              isLoading={isLoading || loadingProducts || loadingSearch}
               onClick={handleClickSearchButton}
             >
               Buscar
