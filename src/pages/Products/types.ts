@@ -7,16 +7,16 @@ export interface IProduct {
   }[];
   productVariants: {
     availableDate: string;
-    productVariantId: string;
+    productVariantId?: string;
     price: number;
     inventoryItemId: string;
-    shortDescription: string;
+    shortDescription?: string | null;
     title: string;
     published: any;
-    volume: string;
-    volumeUnit: any;
-    description: any;
-    subtitle: string;
+    volume?: string;
+    volumeUnit?: any;
+    description?: any;
+    subtitle?: string;
     components: [];
   }[];
 }

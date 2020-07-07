@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Container } from 'styled-bootstrap-grid';
 
+import Button from 'components/Button';
 import Text from 'components/Text';
 
 import ProductsCards from './ProductsCards';
@@ -9,21 +11,18 @@ import { IProduct } from './types';
 import * as s from './styles';
 
 interface IState {
-  state:
-    | {
-        products?: IProduct[];
-        address?: string;
-      }
-    | undefined;
+  products: {
+    list: IProduct[] | [];
+  };
 }
 
 export default function Products() {
-  const { state }: IState = useLocation();
-  const [products, setProducts] = useState<IProduct[] | undefined>(undefined);
+  const { state: locationState }: any = useLocation();
+  const history = useHistory();
 
-  useEffect(() => {
-    setProducts(state?.products);
-  }, [state]);
+  const products: IProduct[] = useSelector<IState, any>(
+    (state) => state.products.list
+  );
 
   const filters = products
     ? products
@@ -37,9 +36,19 @@ export default function Products() {
 
   return (
     <Container>
-      {products ? (
+      {products.length ? (
         <>
-          <Text>Mostrando resultados perto de: {state!.address}</Text>
+          <s.PageInfos>
+            {locationState?.address && (
+              <s.AddressInfos>
+                <Text>Mostrando resultados perto de:</Text>
+                <Text bold uppercase>
+                  {locationState.address}
+                </Text>
+              </s.AddressInfos>
+            )}
+            <Text>{products.length} produtos encontrados.</Text>
+          </s.PageInfos>
           {/* {filters?.map((filter) => (
             <s.ProductCardCategoryTag>{filter}</s.ProductCardCategoryTag>
           ))} */}
@@ -53,7 +62,14 @@ export default function Products() {
           </s.ProductsContainer>
         </>
       ) : (
-        <Text>Nenhum produto foi encontrado. </Text>
+        <s.EmptyState>
+          <Text type="headline" uppercase bold>
+            Nenhum produto foi encontrado.
+          </Text>
+          <Button color="primary" onClick={() => history.push('/')}>
+            Clique aqui para procurar em outro endereço
+          </Button>
+        </s.EmptyState>
       )}
     </Container>
   );

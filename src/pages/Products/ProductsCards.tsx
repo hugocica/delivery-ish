@@ -22,16 +22,16 @@ const ProductsCards = ({ product, ...rest }: IProps) => {
       </s.ProductCardImageContainer>
       <s.ProductCardInfos>
         <s.InfosHeader>
-          <s.ProductCardCategoryTag>
+          <s.ProductCardCategoryTag data-testid="category">
             {product?.productVariants[0]?.subtitle
               ? product.productVariants[0].subtitle
               : 'Sem categoria'}
           </s.ProductCardCategoryTag>
-          <s.ProductName>{product.title}</s.ProductName>
+          <s.ProductName data-testid="title">{product.title}</s.ProductName>
         </s.InfosHeader>
 
         <s.InfosFooter>
-          <s.ProductPrice color="gray4" bold>
+          <s.ProductPrice color="gray4" bold data-testid="price">
             {Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL',

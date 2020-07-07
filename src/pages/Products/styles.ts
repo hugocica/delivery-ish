@@ -87,3 +87,31 @@ export const UnityContainer = styled.div`
 export const UnityText = styled(Text)`
   margin: 0 ${({ theme }) => theme.spacing(1)}px;
 `;
+
+export const EmptyState = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 150px);
+  justify-content: center;
+
+  p {
+    margin-bottom: ${({ theme }) => theme.spacing(1)}px;
+  }
+`;
+
+export const PageInfos = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: ${({ theme }) => theme.spacing(2)}px;
+`;
+
+export const AddressInfos = styled.div`
+  display: flex;
+
+  p {
+    &:first-of-type {
+      margin-right: ${({ theme }) => theme.spacing(1)}px;
+    }
+  }
+`;

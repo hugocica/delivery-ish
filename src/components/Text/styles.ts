@@ -1,21 +1,22 @@
 import styled, { css } from 'styled-components';
 
-import { IProps, ITextStyle } from './types';
+import { ITextStyle } from './types';
 
-const truncate = css<any>`
-  width: ${(props) => props.width && props.width};
+const truncateCSS = css<any>`
+  width: ${({ width }) => width && width};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
 export const Text = styled.p<ITextStyle>`
-  color: ${(props) => props.theme.colors[props.color]};
-  text-align: ${(props) => props.textAlign};
-  font-weight: ${(props) => props.bold && 'bold'};
+  color: ${({ theme, color }) => theme.colors[color]};
+  text-align: ${({ textAlign }) => textAlign};
+  font-weight: ${({ bold }) => bold && 'bold'};
+  text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'unset')};
 
-  ${(props) => props.truncate && truncate};
-  ${(props) =>
+  ${({ truncate }) => truncate && truncateCSS};
+  ${({ theme, type }) =>
     // if props.type not found in theme settings, get body as default
-    props.theme.fonts[props.type] || props.theme.fonts.body}
+    theme.fonts[type] || theme.fonts.body}
 `;

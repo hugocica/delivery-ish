@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Row, Col } from 'styled-bootstrap-grid';
@@ -10,9 +11,11 @@ import { googleAPIToken } from 'services/apollo-config';
 
 import { SEARCH, PRODUCTS } from './queries';
 import * as s from './styles';
+import { SetProductsList } from 'store/modules/products/actions';
 
 export default function HomePage() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
   const [address, setAddress] = useState<string>('');
@@ -46,11 +49,11 @@ export default function HomePage() {
   useEffect(() => {
     if (productsData) {
       setIsLoading(false);
+      dispatch(SetProductsList(productsData?.poc?.products));
       history.push({
         pathname: '/produtos',
         state: {
-          products: productsData?.poc?.products,
-          address: address,
+          address,
         },
       });
     }

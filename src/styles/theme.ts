@@ -28,11 +28,12 @@ const genericFontType = {
 };
 
 export const fonts = {
-  heading2: {
+  headline: {
     ...genericFontType,
-    fontSize: 22,
+    fontFamily: 'Merienda One',
+    fontSize: 18,
     letterSpacing: 0,
-    lineHeight: '19px',
+    lineHeight: '25px',
   },
   caption: {
     ...genericFontType,

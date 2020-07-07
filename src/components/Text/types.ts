@@ -6,6 +6,7 @@ export interface IProps {
   textAlign?: 'left' | 'center' | 'right' | 'unset';
   truncate?: boolean;
   type?: keyof typeof fonts;
+  uppercase?: boolean;
 }
 
 export interface ITextStyle extends IProps {
@@ -13,4 +14,5 @@ export interface ITextStyle extends IProps {
   bold: boolean;
   textAlign: 'left' | 'center' | 'right' | 'unset';
   type: keyof typeof fonts;
+  uppercase?: boolean;
 }
