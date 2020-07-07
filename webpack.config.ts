@@ -9,7 +9,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
   },
   module: {
@@ -32,6 +32,9 @@ module.exports = {
     ],
   },
   devServer: {
+    compress: true,
+    port: 3000,
+    hot: true,
     historyApiFallback: true,
   },
   plugins: [

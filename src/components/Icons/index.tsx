@@ -1,11 +1,11 @@
 import React from 'react';
 import { colors } from 'styles/theme';
 
-import beer from 'assets/icons/beer.svg';
-import github from 'assets/icons/github.svg';
-import minus from 'assets/icons/minus.svg';
-import plus from 'assets/icons/plus.svg';
-import spinner from 'assets/icons/spinner.svg';
+import { ReactComponent as beer } from 'assets/icons/beer.svg';
+import { ReactComponent as github } from 'assets/icons/github.svg';
+import { ReactComponent as minus } from 'assets/icons/minus.svg';
+import { ReactComponent as plus } from 'assets/icons/plus.svg';
+import { ReactComponent as spinner } from 'assets/icons/spinner.svg';
 
 export const dict = {
   beer,
@@ -18,6 +18,7 @@ export const dict = {
 interface IProps {
   name: keyof typeof dict;
   color?: keyof typeof colors;
+  width?: number;
 }
 
 export default ({
