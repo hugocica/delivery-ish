@@ -1,8 +1,9 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
+import { fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 
-import { fireEvent } from '@testing-library/react';
-import { renderWithTheme } from 'testUtils';
+import { renderWithProviders } from 'testUtils';
 
 import ProductsPage from '.';
 import ProductsCards from './ProductsCards';
@@ -38,7 +39,11 @@ const productMock: IProduct = {
 
 describe('Products page', () => {
   it('should render without crashing', () => {
-    const { getByText } = renderWithTheme(<ProductsPage />);
+    const { getByText } = renderWithProviders(
+      <MemoryRouter>
+        <ProductsPage />
+      </MemoryRouter>
+    );
 
     expect(
       getByText('Nenhum produto foi encontrado.').textContent
@@ -48,7 +53,7 @@ describe('Products page', () => {
 
 describe('Product card component', () => {
   it('should render without crashing', () => {
-    const { getByTestId, getByTitle } = renderWithTheme(
+    const { getByTestId, getByTitle } = renderWithProviders(
       <ProductsCards product={productMock} />
     );
 
@@ -62,7 +67,7 @@ describe('Product card component', () => {
     expect(getByTitle('adicionar ao carrinho').textContent).toBeDefined();
   });
   it('should be able to add items to cart and remove them', () => {
-    const { getByTitle } = renderWithTheme(
+    const { getByTitle } = renderWithProviders(
       <ProductsCards product={productMock} />
     );
 

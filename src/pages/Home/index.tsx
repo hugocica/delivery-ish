@@ -29,10 +29,6 @@ export default function HomePage() {
   ] = useLazyQuery(PRODUCTS);
 
   useEffect(() => {
-    () => console.log('unmounted');
-  });
-
-  useEffect(() => {
     if (searchData?.pocSearch[0]?.id) {
       getProducts({
         variables: {
